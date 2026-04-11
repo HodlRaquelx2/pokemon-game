@@ -1,5 +1,5 @@
-// Pokemon Varita de Merlin - GameScene.js
-// Auto-generated - no unicode issues
+// Pokemon Familia - GameScene.js
+// Uses real FireRed tilesets from /tileset.png and /tileset2.png
 
 const PHOTOS = {
   raquelita: "data:image/jpeg;base64,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",
@@ -30,32 +30,35 @@ const PIXEL = {
 };
 
 
+// ═══════════════════════════════════
+// GAME DATA
+// ═══════════════════════════════════
 const GYM_LEADERS = [
   { id:'tote',   name:'Tote',      photo:'tote',    color:0x3498db,
     pokemon:{ name:'Gaston',    hp:90,  atk:55, def:50 },
     dialog:'Tote y Gaston os esperaban!\nPreparaos para mojarse!',
     defeat:'Increible! Medalla Agua conseguida!',
-    moves:['Pistola Agua','Piragua Extrema','Ladrido','Surf'] },
+    moves:['Pistola Agua','Piragua','Ladrido','Surf'] },
   { id:'jl',     name:'Jose Luis', photo:'jl',      color:0xa08060,
     pokemon:{ name:'Chatot',    hp:75,  atk:50, def:65 },
     dialog:'Hoy examen de geologia.\nBasalto, granito y marmol.',
     defeat:'Bien... Medalla Roca.',
-    moves:['Lecture','Geologia','Opinion','Roca Afilada'] },
+    moves:['Lecture','Geologia','Opinion','Roca'] },
   { id:'isa',    name:'Isa',       photo:'isa',     color:0x27ae60,
     pokemon:{ name:'Chansey',   hp:200, atk:30, def:45 },
     dialog:'Holiii! Un besazo enorme!\nVengo desde Plasencia a ganar!',
     defeat:'Ay que guapos! Medalla Planta!',
-    moves:['Besazo','Desde Plasencia','Cura Total','Enredadera'] },
+    moves:['Besazo','Plasencia','Cura','Enred'] },
   { id:'andres', name:'Andres',    photo:'andres',  color:0xe74c3c,
     pokemon:{ name:'Heracross', hp:95,  atk:85, def:70 },
-    dialog:'Lleveis 40min de espera.\nEstaba en quirofano. Empezamos?',
+    dialog:'Lleveis 40min de espera.\nEstaba en quirofano.',
     defeat:'Bien luchado. Medalla Lucha!',
-    moves:['Mega-cuerno','Bisturi X','Torbellino','Corte Preciso'] },
+    moves:['Mega-cuerno','Bisturi','Torbellino','Corte'] },
   { id:'pilar',  name:'Pilar',     photo:'pilar',   color:0xe67e22,
     pokemon:{ name:'Chansey S', hp:120, atk:75, def:65 },
-    dialog:'Lleveis retraso como siempre.\nYo ya habia aparcado y todo.',
-    defeat:'Bien. Medalla Fuego. Me iba igual.',
-    moves:['Espada de Fuego','Llamarada','Corte Rapido','Calor'] },
+    dialog:'Lleveis retraso como siempre.\nYo ya habia aparcado.',
+    defeat:'Bien. Medalla Fuego. Me iba.',
+    moves:['Espada Fuego','Llamarada','Corte','Calor'] },
   { id:'raquel', name:'Raquel',    photo:'raquel',  color:0x9b59b6,
     pokemon:{ name:'Raquelita', hp:80,  atk:60, def:55 },
     dialog:'Llevamos 3 semanas entrenando.\nRaquelita dormia pero da igual.',
@@ -68,12 +71,12 @@ const ELITE = [
     pokemon:{ name:'Dragon',   hp:180, atk:90, def:80 },
     dialog:'Has derrotado los 6 gimnasios.\nNadie llega hasta mi sin arrepentirse.',
     defeat:'Impresionante. Medalla Suprema.',
-    moves:['Enfado Materno','Mirada Fulminante','Silencio','Dragon Maestro'] },
+    moves:['Enfado','Mirada','Silencio','Dragon'] },
   { id:'pilar_m', name:'Pilar', photo:'pilar_m', color:0x8e44ad,
     pokemon:{ name:'Leviatan', hp:220, atk:100, def:90 },
     dialog:'Creias que habias ganado?\nLas suegras NUNCA perdemos!',
     defeat:'No puede ser. LA VARITA ES TUYA!',
-    moves:['Poder Suegra','Combo Doble','Ola Final','Juicio'] },
+    moves:['Poder Suegra','Combo','Ola Final','Juicio'] },
 ];
 
 const TRAINERS = [
@@ -94,115 +97,107 @@ const TRAINERS = [
 ];
 
 const PEDRO_LINES = [
-  'La hierba alta es peligrosa.\nPero si corres no te ven. (FALSO)',
-  'El siguiente gimnasio esta\nal norte. O al sur. Bueno...',
-  'Mi Slowpoke me dijo algo\nimportante. Espero que llegue.',
+  'La hierba alta es peligrosa.\nSi corres no te ven. (FALSO)',
+  'El siguiente gimnasio esta\nal norte. O al sur...',
+  'Mi Slowpoke me dijo algo\nimportante. Sigo esperando.',
   'El truco es atacar primero.\nLo descubri yo solo.',
   'Soy muy listo segun mi madre.\nAunque no encuentro la chaqueta.',
 ];
 
 // ═══════════════════════════════════
-// MAP DATA
-// 0=grass 1=wall 2=tall_grass 3=water
-// 4=path 5=house 6=pokecenter 7=gym_door
-// 8=leader_tile 9=exit_door
+// TILE CONSTANTS
+// These reference positions in the FireRed tileset
+// Each tile is 16x16 in tileset2.png (overworld)
 // ═══════════════════════════════════
+// We'll draw map using Phaser tilemaps with the real tileset
+// Tile IDs for tileset2 (overworld):
+// Row 0: various grass/ground tiles
+// We use canvas-based tile cutting
 
-// TOWN MAP
-const MAP_TOWN = [
-  [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
-  [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
-  [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
-  [1,0,0,5,5,5,0,0,0,0,0,0,0,0,5,5,5,0,0,1],
-  [1,0,0,5,5,5,0,0,0,0,0,0,0,0,5,5,5,0,0,1],
-  [1,0,0,4,4,4,4,4,4,4,4,4,4,4,4,4,4,0,0,1],
-  [1,0,0,0,0,0,0,0,0,4,0,0,0,0,0,0,0,0,0,1],
-  [1,0,0,0,0,2,2,0,0,4,0,0,2,2,0,0,0,0,0,1],
-  [1,0,0,0,2,2,2,0,0,4,0,2,2,2,0,0,0,0,0,1],
-  [1,0,0,0,0,2,0,0,0,4,0,0,2,0,0,0,0,0,0,1],
-  [1,0,0,5,5,5,0,0,0,4,0,0,0,5,5,5,0,0,0,1],
-  [1,0,0,5,5,5,0,0,0,4,0,0,0,5,5,5,0,0,0,1],
-  [1,0,0,4,4,4,4,4,4,4,4,4,4,4,4,4,4,0,0,1],
-  [1,0,0,0,0,0,0,0,0,4,0,0,0,0,0,0,0,0,0,1],
-  [1,3,3,3,0,2,2,0,0,4,0,0,2,2,0,3,3,3,0,1],
-  [1,3,3,3,2,2,2,0,0,4,0,2,2,2,0,3,3,3,0,1],
-  [1,3,3,3,0,2,0,0,0,4,0,0,2,0,0,3,3,3,0,1],
-  [1,0,0,5,5,5,0,0,0,4,0,0,0,5,5,5,0,0,0,1],
-  [1,0,0,5,5,5,0,0,0,4,0,0,0,5,5,5,0,0,0,1],
-  [1,0,0,4,4,4,4,4,4,4,4,4,4,4,4,4,4,0,0,1],
-  [1,0,0,0,0,0,0,0,0,4,0,0,0,0,0,0,0,0,0,1],
-  [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
-  [1,0,0,0,0,0,6,6,6,6,6,6,0,0,0,0,0,0,0,1],
-  [1,0,0,0,0,0,0,0,0,4,0,0,0,0,0,0,0,0,0,1],
-  [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+// Map layout using simple IDs that we map to tileset coords
+// 0=grass, 1=tall_grass, 2=path_h, 3=path_v, 4=path_cross
+// 5=water, 6=wall, 7=building_gymA, 8=building_gymB (2 tile wide entry)
+// 9=pokecenter, 10=player_spawn, 11=gym_door, 12=league_door
+
+// Town map - 20x18 tiles, each 16x16px = 320x288
+const TOWN_MAP = [
+  [6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6],
+  [6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,6],
+  [6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,6],
+  [6,0,0,7,7,7,0,2,2,2,2,2,0,7,7,7,0,0,0,6],
+  [6,0,0,7,11,7,0,2,0,0,0,2,0,7,11,7,0,0,0,6],
+  [6,0,0,0,2,0,0,2,0,0,0,2,0,0,2,0,0,0,0,6],
+  [6,0,0,0,2,0,0,0,0,0,0,0,0,0,2,0,0,0,0,6],
+  [6,0,1,1,2,1,1,0,0,3,0,0,1,1,2,1,1,0,0,6],
+  [6,0,1,1,2,1,1,0,0,3,0,0,1,1,2,1,1,0,0,6],
+  [6,0,0,7,2,7,0,0,0,3,0,0,0,7,2,7,0,0,0,6],
+  [6,0,0,7,11,7,0,0,0,3,0,0,0,7,11,7,0,0,0,6],
+  [6,0,0,0,2,0,0,0,0,3,0,0,0,0,2,0,0,0,0,6],
+  [6,5,5,5,2,0,0,0,0,3,0,0,0,0,2,5,5,5,0,6],
+  [6,5,5,5,2,0,0,1,1,3,1,1,0,0,2,5,5,5,0,6],
+  [6,0,0,7,2,7,0,1,1,3,1,1,0,0,7,2,7,0,0,6],
+  [6,0,0,7,11,7,0,0,0,3,0,0,0,7,11,7,0,0,0,6],
+  [6,0,0,0,2,0,9,9,9,3,9,9,9,0,2,0,0,0,0,6],
+  [6,0,0,0,4,4,4,4,4,12,4,4,4,4,4,0,0,0,0,6],
+  [6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6],
 ];
 
-// Gym positions on town map (door tiles)
 const GYM_DOORS = [
-  { x:4, y:4, gymIdx:0 },
-  { x:14,y:4, gymIdx:1 },
-  { x:4, y:11,gymIdx:2 },
-  { x:13,y:11,gymIdx:3 },
-  { x:4, y:18,gymIdx:4 },
-  { x:13,y:18,gymIdx:5 },
+  {x:4, y:4, gymIdx:0},
+  {x:14,y:4, gymIdx:1},
+  {x:4, y:10,gymIdx:2},
+  {x:14,y:10,gymIdx:3},
+  {x:4, y:15,gymIdx:4},
+  {x:14,y:15,gymIdx:5},
 ];
-
-const LEAGUE_DOOR = { x:8, y:23 };
-
+const LEAGUE_DOOR = {x:9, y:17};
+const TOWN_PEDRO = {x:9, y:6};
 const TOWN_NPCS = [
-  { x:9, y:2,  text:'Bienvenido a la Ciudad Varita!\nDerrota los 6 lideres de gimnasio\ny accede a la Liga Pokemon.' },
-  { x:9, y:21, text:'El Centro Pokemon esta cerca.\nCura a tu equipo gratis.' },
+  {x:9,y:2,  text:'Bienvenido a Ciudad Varita!\nDerrota los 6 gimnasios\ny llega a la Liga Pokemon!'},
+  {x:7,y:16, text:'El Centro Pokemon cura\ntu equipo gratis.\nEntra cuando quieras.'},
 ];
+const TOWN_SPAWN = {x:9, y:17};
 
-const TOWN_PEDRO = { x:9, y:9 };
-const TOWN_SPAWN = { x:9, y:23 };
-
-// Individual gym interior (same template, different leader)
-function gymMap(idx) {
+function makeGymMap(idx) {
   return {
-    name: GYM_LEADERS[idx].name.toUpperCase() + ' - ' + ['Agua','Roca','Planta','Lucha','Fuego','Psiquico'][idx],
-    cols:11, rows:11, isGym:true, gymIdx:idx,
+    name: GYM_LEADERS[idx].name.toUpperCase() + ' GYM',
+    cols:11, rows:9, isGym:true, gymIdx:idx,
     data:[
-      [1,1,1,1,1,1,1,1,1,1,1],
-      [1,4,4,4,4,4,4,4,4,4,1],
-      [1,4,0,0,0,0,0,0,0,4,1],
-      [1,4,0,0,0,0,0,0,0,4,1],
-      [1,4,0,0,0,8,0,0,0,4,1],
-      [1,4,0,0,0,0,0,0,0,4,1],
-      [1,4,0,0,0,0,0,0,0,4,1],
-      [1,4,0,0,0,0,0,0,0,4,1],
-      [1,4,4,4,4,9,4,4,4,4,1],
-      [1,1,1,1,1,1,1,1,1,1,1],
-      [1,1,1,1,1,1,1,1,1,1,1],
+      [6,6,6,6,6,6,6,6,6,6,6],
+      [6,2,2,2,2,2,2,2,2,2,6],
+      [6,2,0,0,0,0,0,0,0,2,6],
+      [6,2,0,0,0,0,0,0,0,2,6],
+      [6,2,0,0,0,11,0,0,0,2,6],
+      [6,2,0,0,0,0,0,0,0,2,6],
+      [6,2,0,0,0,0,0,0,0,2,6],
+      [6,2,2,2,2,13,2,2,2,2,6],
+      [6,6,6,6,6,6,6,6,6,6,6],
     ],
     leaderX:5, leaderY:4,
-    exitX:5,   exitY:8,
-    spawnX:5,  spawnY:7,
+    exitX:5, exitY:7,
+    spawnX:5, spawnY:6,
   };
 }
 
-// League map
 const LEAGUE_MAP = {
   name:'LIGA POKEMON - LAS SUEGRAS',
-  cols:13, rows:13, isLeague:true,
+  cols:13, rows:11, isLeague:true,
   data:[
-    [1,1,1,1,1,1,1,1,1,1,1,1,1],
-    [1,4,4,4,4,4,4,4,4,4,4,4,1],
-    [1,4,0,0,0,0,0,0,0,0,0,4,1],
-    [1,4,0,8,0,0,0,0,0,8,0,4,1],
-    [1,4,0,0,0,0,0,0,0,0,0,4,1],
-    [1,4,0,0,0,0,0,0,0,0,0,4,1],
-    [1,4,0,0,0,0,0,0,0,0,0,4,1],
-    [1,4,0,0,0,0,0,0,0,0,0,4,1],
-    [1,4,0,0,0,0,0,0,0,0,0,4,1],
-    [1,4,4,4,4,4,9,4,4,4,4,4,1],
-    [1,1,1,1,1,1,1,1,1,1,1,1,1],
-    [1,1,1,1,1,1,1,1,1,1,1,1,1],
-    [1,1,1,1,1,1,1,1,1,1,1,1,1],
+    [6,6,6,6,6,6,6,6,6,6,6,6,6],
+    [6,2,2,2,2,2,2,2,2,2,2,2,6],
+    [6,2,0,0,0,0,0,0,0,0,0,2,6],
+    [6,2,0,11,0,0,0,0,0,11,0,2,6],
+    [6,2,0,0,0,0,0,0,0,0,0,2,6],
+    [6,2,0,0,0,0,0,0,0,0,0,2,6],
+    [6,2,0,0,0,0,0,0,0,0,0,2,6],
+    [6,2,0,0,0,0,0,0,0,0,0,2,6],
+    [6,2,2,2,2,2,13,2,2,2,2,2,6],
+    [6,6,6,6,6,6,6,6,6,6,6,6,6],
+    [6,6,6,6,6,6,6,6,6,6,6,6,6],
   ],
   elitePositions:[{x:3,y:3},{x:9,y:3}],
-  exitX:6, exitY:9,
-  spawnX:6, spawnY:8,
+  exitX:6, exitY:8,
+  spawnX:6, spawnY:7,
 };
 
 // ═══════════════════════════════════
@@ -212,180 +207,295 @@ export class GameScene extends Phaser.Scene {
   constructor() { super('GameScene'); }
 
   preload() {
+    // Load real FireRed tilesets
+    this.load.image('tileset',  '/tileset.png');
+    this.load.image('tileset2', '/tileset2.png');
+    // Load family photos
     Object.entries(PHOTOS).forEach(([k,v]) => this.textures.addBase64(k, v));
-    Object.entries(PIXEL).forEach(([k,v]) => this.textures.addBase64('px_'+k, v));
+    Object.entries(PIXEL).forEach(([k,v])  => this.textures.addBase64('px_'+k, v));
   }
 
   create() {
     this.W = this.scale.width;
     this.H = this.scale.height;
-    this.T = 32;
+    this.T = 32; // Display tile size (upscaled from 16px)
+    this.SRC = 16; // Source tile size in tileset
+
+    // Pre-cut tile textures from tilesets
+    this.buildTileTextures();
+
     this.gs = {
       screen:'intro',
       trainer:null, pokemon:null, pokeHP:0,
       defeatedGyms:[], gold:0, steps:0,
-      inventory:{ potion:3, superPotion:1 },
+      inventory:{potion:3,superPotion:1},
       battle:null, dialog:null,
-      map:null, px:0, py:0,
-      animFrame:0, lastMove:0,
+      map:'town', gymIdx:0,
+      px:TOWN_SPAWN.x, py:TOWN_SPAWN.y,
+      animFrame:0,
+      playerDir:'down', // up/down/left/right
+      walkFrame:0,
     };
+
     this.hits = [];
     this.input.on('pointerdown', this.onTap, this);
-    this.time.addEvent({ delay:150, loop:true, callback:()=>{ this.gs.animFrame=(this.gs.animFrame+1)%4; if(this.gs.screen==='map') this.render(); } });
+
+    // Animation timer
+    this.time.addEvent({
+      delay: 200, loop: true,
+      callback: () => {
+        this.gs.animFrame = (this.gs.animFrame+1)%4;
+        if(this.gs.screen==='map') this.render();
+      }
+    });
+
     this.render();
+  }
+
+  buildTileTextures() {
+    // Cut individual tiles from tileset2 (overworld)
+    // FireRed overworld tileset2 standard positions:
+    const ts2 = this.textures.get('tileset2').getSourceImage();
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    const S = this.SRC;
+    const T = this.T;
+
+    const cutTile = (name, sx, sy) => {
+      canvas.width = T; canvas.height = T;
+      ctx.clearRect(0,0,T,T);
+      ctx.imageSmoothingEnabled = false;
+      ctx.drawImage(ts2, sx*S, sy*S, S, S, 0, 0, T, T);
+      const data = canvas.toDataURL();
+      const img = new Image(); img.src = data;
+      this.textures.addImage('tile_'+name, img);
+    };
+
+    // We'll use the tileset2 for ground tiles
+    // Standard FireRed overworld tileset rows/cols:
+    // These are approximate - we cut from real positions
+    try {
+      cutTile('grass',    0, 0);   // green grass
+      cutTile('tallgrass',1, 0);   // tall grass
+      cutTile('path',     2, 0);   // dirt path
+      cutTile('water',    4, 0);   // water
+      cutTile('wall',     6, 0);   // border/wall
+    } catch(e) {
+      // If tileset positions wrong, use colored tiles
+      this.tilesetsLoaded = false;
+      return;
+    }
+    this.tilesetsLoaded = true;
   }
 
   onTap(ptr) {
     const r = this.scale.canvasBounds;
-    const sx = this.W / r.width;
-    const sy = this.H / r.height;
-    const cx = (ptr.x) * sx;
-    const cy = (ptr.y) * sy;
+    const cx = ptr.x * (this.W / r.width);
+    const cy = ptr.y * (this.H / r.height);
     for(let i=this.hits.length-1;i>=0;i--) {
       const h=this.hits[i];
-      if(cx>=h.x&&cx<=h.x+h.w&&cy>=h.y&&cy<=h.y+h.h){ h.cb(); return; }
+      if(cx>=h.x&&cx<=h.x+h.w&&cy>=h.y&&cy<=h.y+h.h){h.cb();return;}
     }
   }
 
-  clearAll() {
-    this.children.list.slice().forEach(c=>c.destroy());
-    this.hits = [];
-  }
+  clearAll() { this.children.list.slice().forEach(c=>c.destroy()); this.hits=[]; }
+  render()   { this.clearAll(); const s=this.gs.screen; if(s==='intro')this.drawIntro(); else if(s==='select')this.drawSelect(); else if(s==='map')this.drawMap(); else if(s==='dialog')this.drawDialog(); else if(s==='battle')this.drawBattle(); else if(s==='victory')this.drawVictory(); }
 
-  render() {
-    this.clearAll();
-    const s = this.gs.screen;
-    if(s==='intro')   this.drawIntro();
-    else if(s==='select') this.drawSelect();
-    else if(s==='map')    this.drawMap();
-    else if(s==='dialog') this.drawDialog();
-    else if(s==='battle') this.drawBattle();
-    else if(s==='victory') this.drawVictory();
-  }
-
-  // ── HELPERS ──
+  G() { return this.add.graphics(); }
   addHit(x,y,w,h,cb) { this.hits.push({x,y,w,h,cb}); }
 
-  gfx() { return this.add.graphics(); }
-
   photoCircle(key, x, y, r, border, pixel) {
-    const k = pixel ? 'px_'+key : key;
+    const k = pixel?'px_'+key:key;
     if(!this.textures.exists(k)) return null;
-    const mask = this.add.graphics();
-    mask.fillStyle(0xffffff);
-    mask.fillCircle(x,y,r);
-    const img = this.add.image(x,y,k).setDisplaySize(r*2,r*2);
+    const mask=this.add.graphics(); mask.fillStyle(0xffffff); mask.fillCircle(x,y,r);
+    const img=this.add.image(x,y,k).setDisplaySize(r*2,r*2);
     img.setMask(mask.createGeometryMask());
-    const g = this.gfx();
-    g.lineStyle(3, border||0xc9a84c, 1);
-    g.strokeCircle(x,y,r+2);
+    const g=this.G(); g.lineStyle(3,border||0xc9a84c,1); g.strokeCircle(x,y,r+2);
     return img;
   }
 
   drawBtn(x,y,w,h,bg,fg,label,cb,size) {
-    const sh = this.gfx(); sh.fillStyle(0x000000,0.4); sh.fillRect(x+3,y+3,w,h);
-    const g = this.gfx(); g.fillStyle(bg,1); g.fillRect(x,y,w,h);
-    g.setInteractive(new Phaser.Geom.Rectangle(x,y,w,h), Phaser.Geom.Rectangle.Contains);
-    g.on('pointerdown', cb);
+    const sh=this.G(); sh.fillStyle(0x000000,0.4); sh.fillRect(x+3,y+3,w,h);
+    const g=this.G(); g.fillStyle(bg,1); g.fillRect(x,y,w,h);
+    g.setInteractive(new Phaser.Geom.Rectangle(x,y,w,h),Phaser.Geom.Rectangle.Contains);
+    g.on('pointerdown',cb);
     this.add.text(x+w/2,y+h/2,label,{fontSize:(size||13)+'px',color:'#'+fg.toString(16).padStart(6,'0'),fontFamily:'Courier New',fontStyle:'bold'}).setOrigin(0.5);
   }
 
-  txt(str,x,y,size,color,align) {
-    return this.add.text(x,y,str,{fontSize:(size||12)+'px',color:color||'#f0f0f0',fontFamily:'Courier New',wordWrap:{width:300},align:align||'left'});
-  }
-
   hpBar(x,y,w,h,pct) {
-    const bg=this.gfx(); bg.fillStyle(0x303040,1); bg.fillRect(x,y,w,h);
-    const c=pct>0.5?0x48d060:pct>0.2?0xf8c030:0xe82020;
-    const fg=this.gfx(); fg.fillStyle(c,1); fg.fillRect(x,y,Math.max(0,w*pct),h);
+    const bg=this.G();bg.fillStyle(0x303040,1);bg.fillRect(x,y,w,h);
+    const fg=this.G();fg.fillStyle(pct>0.5?0x48d060:pct>0.2?0xf8c030:0xe82020,1);fg.fillRect(x,y,Math.max(0,w*pct),h);
   }
 
-  // ── TILE RENDERER ──
-  drawTile(g, tx, ty, tile, frame) {
-    const T=this.T, x=tx*T, y=ty*T;
-    const COLS=[0x78c038,0x706858,0x50a020,0x3878f0,0xc8b450,0xb09040,0xe060a0,0x5070b0,0x402878,0xc8a030];
-    g.fillStyle(COLS[Math.min(tile,COLS.length-1)],1);
-    g.fillRect(x,y,T,T);
-    if(tile===0){g.fillStyle(0x68b028,1);g.fillRect(x+3,y+4,3,3);g.fillRect(x+14,y+10,3,2);g.fillRect(x+21,y+19,3,3);}
-    if(tile===2){
-      g.fillStyle(0x308008,1);g.fillRect(x,y+T-7,T,7);
-      [1,5,9,13,17,21,25,29].forEach(bx=>{g.fillStyle(0x409010,1);g.fillRect(x+bx,y+T-20,2,13);g.fillStyle(0x60b020,1);g.fillRect(x+bx,y+T-20,2,3);});
+  // ── TILE DRAWING ──
+  // Draw a single map tile using real FireRed graphics where possible
+  drawMapTile(x, y, tileId, frame) {
+    const T = this.T;
+    const g = this.G();
+
+    // Color fallback palette matching FireRed colors
+    const FIRERED_COLORS = {
+      0:  0x88c070,  // grass - FireRed green
+      1:  0x508040,  // tall grass - darker green
+      2:  0xc8b878,  // path - sandy/dirt
+      3:  0xc8b878,  // path vertical
+      4:  0xc8b878,  // path cross
+      5:  0x4090d0,  // water - FireRed blue
+      6:  0x282828,  // wall/border - dark
+      7:  0xc0b8a8,  // building
+      8:  0xb0a898,  // building alt
+      9:  0xe06080,  // pokecenter - pink
+      10: 0x88c070,  // spawn
+      11: 0x705838,  // gym door
+      12: 0x602090,  // league door
+      13: 0xc09820,  // exit tile
+    };
+
+    const color = FIRERED_COLORS[tileId] || 0x88c070;
+    g.fillStyle(color, 1);
+    g.fillRect(x, y, T, T);
+
+    // Add FireRed-style details to each tile type
+    if(tileId===0) { // Grass - add texture
+      g.fillStyle(0x78b060, 1);
+      // Grass pattern like FireRed
+      for(let gx=0;gx<T;gx+=8) for(let gy=0;gy<T;gy+=8) {
+        if((gx/8+gy/8)%2===0){g.fillStyle(0x80b868,1);g.fillRect(x+gx,y+gy,8,8);}
+      }
+      g.fillStyle(0x90c878,1);
+      g.fillRect(x+2,y+3,2,3); g.fillRect(x+6,y+1,2,4);
+      g.fillRect(x+12,y+5,2,3); g.fillRect(x+18,y+2,2,4);
+      g.fillRect(x+24,y+6,2,3); g.fillRect(x+28,y+3,2,3);
     }
-    if(tile===3){
-      g.fillStyle(0x1858d0,1);g.fillRect(x+1,y+1,T-2,T-2);
-      const wv=(frame*3)%T;
-      g.fillStyle(0x60a8f0,0.5);g.fillRect(x+wv-T,y+8,T,3);g.fillRect(x+wv,y+8,T,3);
-      g.fillRect(x+((wv+T/2)%T)-T/2,y+18,T/2,3);
+
+    if(tileId===1) { // Tall grass - FireRed style
+      g.fillStyle(0x407030, 1); g.fillRect(x,y,T,T);
+      g.fillStyle(0x508040, 1);
+      for(let gx=0;gx<T;gx+=6) {
+        const h2=14+(gx*3)%10;
+        g.fillRect(x+gx, y+T-h2, 3, h2);
+        g.fillStyle(0x60a050,1); g.fillRect(x+gx, y+T-h2, 3, 3);
+        g.fillStyle(0x508040,1);
+      }
     }
-    if(tile===4){g.fillStyle(0xb89840,1);g.fillRect(x+1,y+1,T-2,T-2);}
-    if(tile===5){
-      g.fillStyle(0xb02818,1);g.fillRect(x,y,T,T/2);
-      g.fillStyle(0xe8d0a8,1);g.fillRect(x+2,y+T/2,T-4,T/2-2);
-      g.fillStyle(0x80c0f8,1);g.fillRect(x+3,y+T/2+3,7,6);g.fillRect(x+T-10,y+T/2+3,7,6);
-      g.fillStyle(0x904818,1);g.fillRect(x+T/2-3,y+T-9,6,9);
+
+    if(tileId===2||tileId===3||tileId===4) { // Path - FireRed dirt/sand
+      g.fillStyle(0xd0b880,1); g.fillRect(x+1,y+1,T-2,T-2);
+      g.fillStyle(0xc0a870,1);
+      g.fillRect(x+2,y+T/2,4,2); g.fillRect(x+T-6,y+T/2,4,2);
+      g.fillRect(x+T/2,y+2,2,4); g.fillRect(x+T/2,y+T-6,2,4);
     }
-    if(tile===6){
-      g.fillStyle(0xd040a0,1);g.fillRect(x,y,T,T/2);
-      g.fillStyle(0xe8d0a8,1);g.fillRect(x+2,y+T/2,T-4,T/2-2);
-      g.fillStyle(0xff3060,1);g.fillRect(x+T/2-2,y+T/2+3,4,9);g.fillRect(x+T/2-5,y+T/2+7,10,4);
+
+    if(tileId===5) { // Water - FireRed animated
+      g.fillStyle(0x2878d0,1); g.fillRect(x+1,y+1,T-2,T-2);
+      const wv=(frame*4)%T;
+      g.fillStyle(0x60a8f0,0.6);
+      g.fillRect(x+wv-T,y+6,T,4); g.fillRect(x+wv,y+6,T,4);
+      g.fillRect(x+((wv+T/2)%T)-T/2,y+18,T/2,4);
+      g.fillRect(x+wv-T,y+24,T,3); g.fillRect(x+wv,y+24,T,3);
     }
-    if(tile===7||tile===8){
-      g.fillStyle(0x283898,1);g.fillRect(x,y,T,T);
-      g.fillStyle(0x4860c8,1);g.fillRect(x+2,y+2,T-4,T-4);
-      g.fillStyle(0x9090e0,1);g.fillRect(x+2,y,T-4,3);g.fillRect(x+2,y+T-3,T-4,3);g.fillRect(x,y+2,3,T-4);g.fillRect(x+T-3,y+2,3,T-4);
-      if(tile===8){const p=0.4+0.6*Math.abs(Math.sin(frame*0.8));g.fillStyle(0xc080ff,p);g.fillRect(x+4,y+4,T-8,T-8);}
+
+    if(tileId===6) { // Border wall - dark
+      g.fillStyle(0x101010,1); g.fillRect(x,y,T,T);
+      g.fillStyle(0x202020,1); g.fillRect(x+1,y+1,T-2,T-2);
     }
-    if(tile===9){const p=0.4+0.6*Math.abs(Math.sin(frame*0.8));g.fillStyle(0xf0d020,p);g.fillRect(x+4,y+4,T-8,T-8);}
-    g.lineStyle(0.5,0x000000,0.08);g.strokeRect(x,y,T,T);
+
+    if(tileId===7||tileId===8) { // Building - use tileset image
+      // Try to draw from real tileset
+      if(this.textures.exists('tileset')) {
+        const img = this.add.image(x+T/2,y+T/2,'tileset');
+        img.setDisplaySize(T,T);
+        img.setCrop(0,0,64,64); // First building in tileset
+      } else {
+        g.fillStyle(0xc8c0b0,1); g.fillRect(x,y,T,T);
+      }
+    }
+
+    if(tileId===9) { // Pokecenter
+      g.fillStyle(0xe06880,1); g.fillRect(x,y,T,T/2);
+      g.fillStyle(0xf0e8d8,1); g.fillRect(x+2,y+T/2,T-4,T/2-2);
+      g.fillStyle(0xff4060,1); g.fillRect(x+T/2-2,y+T/2+3,4,8); g.fillRect(x+T/2-5,y+T/2+6,10,4);
+    }
+
+    if(tileId===11) { // Gym door - special marker
+      g.fillStyle(0x806040,1); g.fillRect(x,y,T,T);
+      g.fillStyle(0xa08050,1); g.fillRect(x+2,y+2,T-4,T-4);
+      // Door handle
+      g.fillStyle(0xd0b870,1); g.fillRect(x+T/2-6,y+T-12,12,10);
+      g.fillStyle(0xf0d890,1); g.fillRect(x+T/2-1,y+T-9,3,4);
+    }
+
+    if(tileId===12) { // League door
+      const p=0.4+0.6*Math.abs(Math.sin(frame*0.8));
+      g.fillStyle(0x301860,1); g.fillRect(x,y,T,T);
+      g.fillStyle(0x8040d0,p); g.fillRect(x+3,y+3,T-6,T-6);
+      g.fillStyle(0xc080ff,0.6); g.fillRect(x+T/2-2,y+4,4,T-8);
+    }
+
+    if(tileId===13) { // Exit door
+      const p=0.4+0.6*Math.abs(Math.sin(frame*0.8));
+      g.fillStyle(0x604020,1); g.fillRect(x,y,T,T);
+      g.fillStyle(0xf0d020,p); g.fillRect(x+4,y+4,T-8,T-8);
+    }
+
+    // Subtle grid like FireRed
+    g.lineStyle(0.5,0x000000,0.06); g.strokeRect(x,y,T,T);
+  }
+
+  // Draw player sprite (FireRed style walking)
+  drawPlayer(x, y, dir, frame) {
+    const T=this.T;
+    // Shadow
+    const sh=this.G(); sh.fillStyle(0x000000,0.2); sh.fillEllipse(x+T/2,y+T-4,T*0.6,T*0.2);
+    // Bob animation
+    const bob=frame%2===0?0:-1;
+    // Draw trainer photo in circle with walking bob
+    this.photoCircle(this.gs.trainer.photo, x+T/2, y+T/2-2+bob, T/2-3, 0xffd080, false);
+    // Direction indicator (small arrow)
+    const arrowColors={up:'#ffffff',down:'#ffffff',left:'#ffffff',right:'#ffffff'};
+    // Walking legs animation (simple)
+    if(frame%2===0) {
+      const lg=this.G(); lg.fillStyle(0x4050a0,1);
+      lg.fillRect(x+T/2-6,y+T-10,4,6);
+      lg.fillRect(x+T/2+2,y+T-8,4,4);
+    } else {
+      const lg=this.G(); lg.fillStyle(0x4050a0,1);
+      lg.fillRect(x+T/2-6,y+T-8,4,4);
+      lg.fillRect(x+T/2+2,y+T-10,4,6);
+    }
   }
 
   // ── INTRO ──
   drawIntro() {
     const W=this.W,H=this.H;
-    const bg=this.gfx();
-    bg.fillGradientStyle(0x050210,0x050210,0x140825,0x140825,1);
-    bg.fillRect(0,0,W,H);
-    // Stars
-    for(let i=0;i<35;i++){
-      const f=this.gs.animFrame;
-      const a=0.3+0.7*Math.abs(Math.sin(f*0.3+i));
-      const sg=this.gfx();sg.fillStyle(0xffffff,a);sg.fillRect((i*137)%W,(i*97)%440,i%3?1:2,i%3?1:2);
-    }
+    const bg=this.G();bg.fillGradientStyle(0x050210,0x050210,0x140825,0x140825,1);bg.fillRect(0,0,W,H);
+    for(let i=0;i<35;i++){const sg=this.G();const a=0.2+0.8*Math.abs(Math.sin(this.gs.animFrame*0.3+i));sg.fillStyle(0xffffff,a);sg.fillRect((i*137)%W,(i*97)%440,i%3?1:2,i%3?1:2);}
     const wy=130+Math.sin(this.gs.animFrame*0.4)*10;
     this.add.text(W/2,wy,'\uD83E\uDE84',{fontSize:'64px'}).setOrigin(0.5);
     this.add.text(W/2,205,'POKEMON',{fontSize:'28px',color:'#c9a84c',fontFamily:'Courier New',fontStyle:'bold',shadow:{blur:15,color:'#c9a84c',fill:true}}).setOrigin(0.5);
     this.add.text(W/2,240,'Varita de Merlin',{fontSize:'20px',color:'#a78bfa',fontFamily:'Courier New'}).setOrigin(0.5);
-    ['6 Gimnasios familiares','Liga: Ana + Pilar (Las Suegras)','Mapa estilo Pokemon original','Pedro el NPC inutil'].forEach((t,i)=>{
+    ['6 Gimnasios familiares','Liga: Ana + Pilar (Las Suegras)','Estilo Pokemon FireRed','Pedro el NPC inutil'].forEach((t,i)=>{
       this.add.text(W/2,292+i*22,t,{fontSize:'11px',color:'#8090a8',fontFamily:'Courier New'}).setOrigin(0.5);
     });
     this.drawBtn(W/2-105,490,210,50,0xc9a84c,0x1a0a00,'> NUEVA PARTIDA',()=>{this.gs.screen='select';this.render();},14);
-    // Family photos row
-    ['pedro','raquel','raquelita','tote','andres','pilar'].forEach((k,i)=>{
-      this.photoCircle(k,28+i*54,582,22,'#333333',true);
-    });
+    ['pedro','raquel','raquelita','tote','andres','pilar'].forEach((k,i)=>{this.photoCircle(k,28+i*54,582,22,'#333333',true);});
   }
 
   // ── SELECT ──
   drawSelect() {
     const W=this.W,H=this.H;
-    const bg=this.gfx();bg.fillStyle(0x060412,1);bg.fillRect(0,0,W,H);
+    const bg=this.G();bg.fillStyle(0x060412,1);bg.fillRect(0,0,W,H);
     this.add.text(W/2,18,'ELIGE TU ENTRENADOR',{fontSize:'13px',color:'#c9a84c',fontFamily:'Courier New',fontStyle:'bold'}).setOrigin(0.5);
     const cW=(W-48)/2,cH=122;
     TRAINERS.forEach((t,i)=>{
-      const col=i%2,row=Math.floor(i/2);
-      const cx=16+col*(cW+16),cy=46+row*(cH+8);
+      const col=i%2,row=Math.floor(i/2),cx=16+col*(cW+16),cy=46+row*(cH+8);
       const sel=this.gs.trainer&&this.gs.trainer.id===t.id;
-      const cg=this.gfx();
-      cg.fillStyle(sel?0x1a1505:0x0e0b1a,1);cg.fillRect(cx,cy,cW,cH);
-      cg.lineStyle(sel?2.5:1.5,sel?0xc9a84c:0x2a2040,1);cg.strokeRect(cx,cy,cW,cH);
+      const cg=this.G();cg.fillStyle(sel?0x1a1505:0x0e0b1a,1);cg.fillRect(cx,cy,cW,cH);cg.lineStyle(sel?2.5:1.5,sel?0xc9a84c:0x2a2040,1);cg.strokeRect(cx,cy,cW,cH);
       this.photoCircle(t.photo,cx+30,cy+40,26,sel?'#c9a84c':t.color,false);
       this.add.text(cx+62,cy+12,t.name.toUpperCase(),{fontSize:'11px',color:'#f0f0f0',fontFamily:'Courier New',fontStyle:'bold'});
       this.add.text(cx+62,cy+30,t.pokemon.name,{fontSize:'10px',color:t.color,fontFamily:'Courier New'});
       this.add.text(cx+8,cy+84,'HP:'+t.pokemon.hp+' ATK:'+t.pokemon.atk,{fontSize:'9px',color:'#5a5070',fontFamily:'Courier New'});
-      if(sel){
-        const ck=this.gfx();ck.fillStyle(0xc9a84c,1);ck.fillCircle(cx+cW-10,cy+10,8);
-        this.add.text(cx+cW-10,cy+10,'OK',{fontSize:'7px',color:'#000000',fontFamily:'Courier New',fontStyle:'bold'}).setOrigin(0.5);
-      }
+      if(sel){const ck=this.G();ck.fillStyle(0xc9a84c,1);ck.fillCircle(cx+cW-10,cy+10,8);this.add.text(cx+cW-10,cy+10,'OK',{fontSize:'7px',color:'#000000',fontFamily:'Courier New',fontStyle:'bold'}).setOrigin(0.5);}
       cg.setInteractive(new Phaser.Geom.Rectangle(cx,cy,cW,cH),Phaser.Geom.Rectangle.Contains);
       cg.on('pointerdown',()=>{this.gs.trainer=t;this.gs.pokemon={...t.pokemon};this.gs.pokeHP=t.pokemon.hp;this.render();});
     });
@@ -396,70 +506,61 @@ export class GameScene extends Phaser.Scene {
     this.gs.defeatedGyms=[];this.gs.gold=0;this.gs.steps=0;
     this.gs.inventory={potion:3,superPotion:1};
     this.gs.pokeHP=this.gs.pokemon.hp;
-    this.gs.map='town';
-    this.gs.px=TOWN_SPAWN.x;this.gs.py=TOWN_SPAWN.y;
+    this.gs.map='town';this.gs.px=TOWN_SPAWN.x;this.gs.py=TOWN_SPAWN.y;
     this.gs.screen='map';this.render();
   }
 
   // ── MAP ──
+  getMapDef() {
+    if(this.gs.map==='town') return {data:TOWN_MAP,cols:20,rows:19,name:'Ciudad Varita de Merlin'};
+    if(this.gs.map==='league') return LEAGUE_MAP;
+    return makeGymMap(this.gs.gymIdx);
+  }
+
   drawMap() {
     const W=this.W,H=this.H,T=this.T,gs=this.gs;
-    const mapDef = gs.map==='town' ? {data:MAP_TOWN,cols:20,rows:25} : gs.map==='league' ? LEAGUE_MAP : gymMap(gs.gymIdx);
+    const m=this.getMapDef();
     const MAP_Y=58,MAP_H=H-58-168;
     const oX=Math.floor(W/2-gs.px*T-T/2);
     const oY=Math.floor(MAP_Y+MAP_H/2-gs.py*T-T/2);
     const frame=gs.animFrame;
 
-    // Tiles
-    const tg=this.gfx();
-    mapDef.data.forEach((row,ty)=>row.forEach((tile,tx)=>{
+    // Draw all tiles
+    m.data.forEach((row,ty)=>row.forEach((tile,tx)=>{
       const px=oX+tx*T,py=oY+ty*T;
       if(py+T<MAP_Y||py>MAP_Y+MAP_H) return;
+      // Override defeated gym doors
       let t=tile;
-      // Defeated gym door -> normal floor
-      if(t===7&&gs.map==='town'){
+      if(t===11&&gs.map==='town'){
         const gd=GYM_DOORS.find(g=>g.x===tx&&g.y===ty);
-        if(gd&&gs.defeatedGyms.includes(gd.gymIdx)) t=4;
+        if(gd&&gs.defeatedGyms.includes(gd.gymIdx)) t=2;
       }
-      tg.x=0;tg.y=0;
-      // Draw tile at absolute position
-      const sg=this.gfx();
-      sg.fillStyle([0x78c038,0x706858,0x50a020,0x3878f0,0xc8b450,0xb09040,0xe060a0,0x5070b0,0x402878,0xc8a030][Math.min(t,9)],1);
-      sg.fillRect(px,py,T,T);
-      if(t===0){sg.fillStyle(0x68b028,1);sg.fillRect(px+3,py+4,3,3);sg.fillRect(px+14,py+10,3,2);sg.fillRect(px+21,py+19,3,3);}
-      if(t===2){sg.fillStyle(0x308008,1);sg.fillRect(px,py+T-7,T,7);[1,5,9,13,17,21,25,29].forEach(bx=>{sg.fillStyle(0x409010,1);sg.fillRect(px+bx,py+T-20,2,13);sg.fillStyle(0x60b020,1);sg.fillRect(px+bx,py+T-20,2,3);});}
-      if(t===3){sg.fillStyle(0x1858d0,1);sg.fillRect(px+1,py+1,T-2,T-2);const wv=(frame*3)%T;sg.fillStyle(0x60a8f0,0.5);sg.fillRect(px+wv-T,py+8,T,3);sg.fillRect(px+wv,py+8,T,3);}
-      if(t===4){sg.fillStyle(0xb89840,1);sg.fillRect(px+1,py+1,T-2,T-2);}
-      if(t===5){sg.fillStyle(0xb02818,1);sg.fillRect(px,py,T,T/2);sg.fillStyle(0xe8d0a8,1);sg.fillRect(px+2,py+T/2,T-4,T/2-2);sg.fillStyle(0x80c0f8,1);sg.fillRect(px+3,py+T/2+3,7,6);sg.fillRect(px+T-10,py+T/2+3,7,6);sg.fillStyle(0x904818,1);sg.fillRect(px+T/2-3,py+T-9,6,9);}
-      if(t===6){sg.fillStyle(0xd040a0,1);sg.fillRect(px,py,T,T/2);sg.fillStyle(0xe8d0a8,1);sg.fillRect(px+2,py+T/2,T-4,T/2-2);sg.fillStyle(0xff3060,1);sg.fillRect(px+T/2-2,py+T/2+3,4,9);sg.fillRect(px+T/2-5,py+T/2+7,10,4);}
-      if(t===7||t===8||t===9){sg.fillStyle(0x283898,1);sg.fillRect(px,py,T,T);sg.fillStyle(0x4860c8,1);sg.fillRect(px+2,py+2,T-4,T-4);if(t!==7){const p=0.4+0.6*Math.abs(Math.sin(frame*0.8));sg.fillStyle(t===8?0xc080ff:0xf0d020,p);sg.fillRect(px+4,py+4,T-8,T-8);}}
-      sg.lineStyle(0.5,0x000000,0.08);sg.strokeRect(px,py,T,T);
+      this.drawMapTile(px,py,t,frame);
     }));
 
-    // Gym labels on town map
+    // Draw gym leader photos above gym doors
     if(gs.map==='town'){
       GYM_DOORS.forEach((gd,idx)=>{
         const gym=GYM_LEADERS[idx];
         const defeated=gs.defeatedGyms.includes(idx);
-        const gx=oX+gd.x*T+T/2,gy=oY+gd.y*T-T/2;
-        if(gy<MAP_Y-40||gy>MAP_Y+MAP_H+20) return;
-        this.photoCircle('px_'+gym.photo,gx,gy,T/2-2,defeated?0x404040:gym.color,true);
+        const gx=oX+gd.x*T+T/2,gy=oY+(gd.y-1)*T+T/2;
+        if(gy<MAP_Y-30||gy>MAP_Y+MAP_H+20) return;
+        this.photoCircle(gym.photo,gx,gy,T/2-3,defeated?0x404040:gym.color,true);
         if(defeated){
-          const dk=this.gfx();dk.fillStyle(0x202020,0.7);dk.fillCircle(gx,gy,T/2-2);
-          this.add.text(gx,gy,'\u2713',{fontSize:'16px',color:'#80ff80',fontFamily:'Courier New'}).setOrigin(0.5);
+          const dk=this.G();dk.fillStyle(0x000000,0.6);dk.fillCircle(gx,gy,T/2-3);
+          this.add.text(gx,gy,'\u2713',{fontSize:'14px',color:'#80ff80'}).setOrigin(0.5);
         }
-        const lb=this.gfx();lb.fillStyle(0x000000,0.6);lb.fillRect(gx-24,gy+T/2-2,48,12);
-        this.add.text(gx,gy+T/2+4,gym.name,{fontSize:'7px',color:defeated?'#808080':'#ffffff',fontFamily:'Courier New'}).setOrigin(0.5);
+        const nb=this.G();nb.fillStyle(0x000000,0.65);nb.fillRect(gx-26,gy+T/2-2,52,13);
+        this.add.text(gx,gy+T/2+5,gym.name,{fontSize:'7px',color:defeated?'#808080':'#ffffff',fontFamily:'Courier New'}).setOrigin(0.5);
       });
-      // League entrance label
-      const lx=oX+LEAGUE_DOOR.x*T+T/2,ly=oY+LEAGUE_DOOR.y*T-T/2;
-      if(ly>=MAP_Y-40&&ly<=MAP_Y+MAP_H+20){
+      // League
+      const lx=oX+LEAGUE_DOOR.x*T+T/2,ly=oY+(LEAGUE_DOOR.y-1)*T+T/2;
+      if(ly>MAP_Y-30&&ly<MAP_Y+MAP_H+20){
         const medals=gs.defeatedGyms.filter(i=>i<6).length;
-        const lcolor=medals>=6?0xaa40ff:0x403060;
-        this.photoCircle('ana',lx-18,ly-4,16,lcolor,true);
-        this.photoCircle('pilar_m',lx+18,ly-4,16,lcolor,true);
-        const llb=this.gfx();llb.fillStyle(0x000000,0.7);llb.fillRect(lx-36,ly+T/2-2,72,12);
-        this.add.text(lx,ly+T/2+4,medals>=6?'LIGA POKEMON':'LIGA ('+medals+'/6)',{fontSize:'7px',color:medals>=6?'#c080ff':'#604080',fontFamily:'Courier New'}).setOrigin(0.5);
+        this.photoCircle('ana',lx-20,ly,16,medals>=6?0xaa40ff:0x302050,true);
+        this.photoCircle('pilar_m',lx+20,ly,16,medals>=6?0xaa40ff:0x302050,true);
+        const nb=this.G();nb.fillStyle(0x000000,0.7);nb.fillRect(lx-40,ly+T/2-2,80,13);
+        this.add.text(lx,ly+T/2+5,medals>=6?'LIGA POKEMON':'LIGA ('+medals+'/6)',{fontSize:'7px',color:medals>=6?'#c080ff':'#604080',fontFamily:'Courier New'}).setOrigin(0.5);
       }
       // NPCs
       TOWN_NPCS.forEach(npc=>{
@@ -475,49 +576,51 @@ export class GameScene extends Phaser.Scene {
       }
     }
 
-    // Gym interior leader
-    if(mapDef.isGym){
-      const gym=GYM_LEADERS[mapDef.gymIdx];
-      const lx=oX+mapDef.leaderX*T+T/2,ly=oY+mapDef.leaderY*T+T/2;
-      if(!gs.defeatedGyms.includes(mapDef.gymIdx)){
+    // Gym leader inside gym
+    if(m.isGym){
+      const gym=GYM_LEADERS[m.gymIdx];
+      const lx=oX+m.leaderX*T+T/2,ly=oY+m.leaderY*T+T/2;
+      if(!gs.defeatedGyms.includes(m.gymIdx)){
         this.photoCircle(gym.photo,lx,ly,T/2-2,gym.color,false);
-        this.add.text(lx,ly+T/2+2,gym.name,{fontSize:'8px',color:'#'+gym.color.toString(16).padStart(6,'0'),fontFamily:'Courier New'}).setOrigin(0.5);
+        this.add.text(lx,ly+T/2+3,gym.name,{fontSize:'8px',color:'#'+gym.color.toString(16).padStart(6,'0'),fontFamily:'Courier New'}).setOrigin(0.5);
+        // Exclamation if player nearby
+        if(Math.abs(gs.px-m.leaderX)<=2&&Math.abs(gs.py-m.leaderY)<=2){
+          const eg=this.G();eg.fillStyle(0xff2020,1);eg.fillRect(lx-6,ly-T/2-14,12,14);
+          this.add.text(lx,ly-T/2-7,'!',{fontSize:'11px',color:'#ffffff',fontFamily:'Courier New',fontStyle:'bold'}).setOrigin(0.5);
+        }
       } else {
         this.add.text(lx,ly,'\uD83C\uDFC6',{fontSize:'22px'}).setOrigin(0.5);
       }
       // Exit pulse
-      const ex=oX+mapDef.exitX*T+T/2,ey=oY+mapDef.exitY*T+T/2;
       const pa=0.5+0.5*Math.abs(Math.sin(frame*0.8));
-      this.add.text(ex,ey,'\u25BC SALIR',{fontSize:Math.floor(12+pa*3)+'px',color:'#f0d020',fontFamily:'Courier New',fontStyle:'bold'}).setOrigin(0.5);
+      const exx=oX+m.exitX*T+T/2,exy=oY+m.exitY*T+T/2;
+      this.add.text(exx,exy,'\u25BC SALIR',{fontSize:Math.floor(11+pa*3)+'px',color:'#f0d020',fontFamily:'Courier New',fontStyle:'bold'}).setOrigin(0.5);
     }
 
-    // League interior
-    if(mapDef.isLeague){
+    // League
+    if(m.isLeague){
       ELITE.forEach((e,i)=>{
         if(gs.defeatedGyms.includes(6+i)) return;
-        const ep=mapDef.elitePositions[i];
-        const ex=oX+ep.x*T+T/2,ey=oY+ep.y*T+T/2;
-        this.photoCircle(e.photo,ex,ey,T/2-2,e.color,false);
-        this.add.text(ex,ey+T/2+2,e.name,{fontSize:'8px',color:'#'+e.color.toString(16).padStart(6,'0'),fontFamily:'Courier New'}).setOrigin(0.5);
+        const ep=m.elitePositions[i];
+        const ex2=oX+ep.x*T+T/2,ey2=oY+ep.y*T+T/2;
+        this.photoCircle(e.photo,ex2,ey2,T/2-2,e.color,false);
+        this.add.text(ex2,ey2+T/2+3,e.name,{fontSize:'8px',color:'#'+e.color.toString(16).padStart(6,'0'),fontFamily:'Courier New'}).setOrigin(0.5);
       });
       const pa=0.5+0.5*Math.abs(Math.sin(frame*0.8));
-      const exx=oX+mapDef.exitX*T+T/2,exy=oY+mapDef.exitY*T+T/2;
-      this.add.text(exx,exy,'\u25BC SALIR',{fontSize:Math.floor(12+pa*3)+'px',color:'#f0d020',fontFamily:'Courier New',fontStyle:'bold'}).setOrigin(0.5);
+      const exx=oX+m.exitX*T+T/2,exy=oY+m.exitY*T+T/2;
+      this.add.text(exx,exy,'\u25BC SALIR',{fontSize:Math.floor(11+pa*3)+'px',color:'#f0d020',fontFamily:'Courier New',fontStyle:'bold'}).setOrigin(0.5);
     }
 
     // Player
-    const ppx=oX+gs.px*T+T/2,ppy=oY+gs.py*T+T/2;
-    const sh=this.gfx();sh.fillStyle(0x000000,0.25);sh.fillEllipse(ppx,ppy+14,22,8);
-    // Walking animation
-    const bob=gs.animFrame%2===0?0:-2;
-    this.photoCircle(gs.trainer.photo,ppx,ppy-2+bob,T/2-4,0xf0d080,false);
+    const ppx=oX+gs.px*T,ppy=oY+gs.py*T;
+    this.drawPlayer(ppx,ppy,gs.playerDir,frame);
 
-    // Clip map area
-    const cg=this.gfx();cg.fillStyle(0x0a0818,1);cg.fillRect(0,0,W,MAP_Y);cg.fillRect(0,MAP_Y+MAP_H,W,H-MAP_Y-MAP_H);
+    // Clip
+    const clip=this.G();clip.fillStyle(0x080816,1);clip.fillRect(0,0,W,MAP_Y);clip.fillRect(0,MAP_Y+MAP_H,W,H-MAP_Y-MAP_H);
 
-    // Map name
-    const mnb=this.gfx();mnb.fillStyle(0x000000,0.7);mnb.fillRect(0,MAP_Y,W,16);
-    this.add.text(W/2,MAP_Y+8,mapDef.name||'Pueblo Varita de Merlin',{fontSize:'9px',color:'#c9a84c',fontFamily:'Courier New'}).setOrigin(0.5);
+    // Map name bar
+    const mnb=this.G();mnb.fillStyle(0x000000,0.75);mnb.fillRect(0,MAP_Y,W,16);
+    this.add.text(W/2,MAP_Y+8,m.name||'Ciudad Varita de Merlin',{fontSize:'9px',color:'#c9a84c',fontFamily:'Courier New'}).setOrigin(0.5);
 
     this.drawHUD();
     this.drawDPad(MAP_Y+MAP_H);
@@ -525,26 +628,23 @@ export class GameScene extends Phaser.Scene {
 
   drawHUD() {
     const W=this.W,gs=this.gs;
-    const hg=this.gfx();hg.fillStyle(0x10101e,1);hg.fillRect(0,0,W,58);hg.lineStyle(2.5,0xc9a84c,1);hg.lineBetween(0,58,W,58);
+    const hg=this.G();hg.fillStyle(0x10101e,1);hg.fillRect(0,0,W,58);hg.lineStyle(2.5,0xc9a84c,1);hg.lineBetween(0,58,W,58);
     if(!gs.trainer) return;
     this.photoCircle(gs.trainer.photo,22,29,20,gs.trainer.color,false);
     this.add.text(46,8,gs.trainer.name+' - '+gs.pokemon.name,{fontSize:'11px',color:'#c9a84c',fontFamily:'Courier New',fontStyle:'bold'});
     this.hpBar(60,26,90,7,gs.pokeHP/gs.pokemon.hp);
     this.add.text(154,24,gs.pokeHP+'/'+gs.pokemon.hp,{fontSize:'9px',color:'#8090a0',fontFamily:'Courier New'});
     const medals=gs.defeatedGyms.filter(i=>i<6).length;
-    this.add.text(W-6,8,'\uD83C\uDFC5'+medals+'/6  $'+gs.gold,{fontSize:'10px',color:'#c9a84c',fontFamily:'Courier New'}).setRightAlign().setOrigin(1,0);
-    [0xc9a84c,0xa08060,0x27ae60,0xe74c3c,0xe67e22,0x9b59b6].forEach((c,i)=>{
-      const mg=this.gfx();mg.fillStyle(gs.defeatedGyms.includes(i)?c:0x1e1830,1);mg.fillCircle(46+i*16,46,6);
-    });
+    this.add.text(W-6,8,'\uD83C\uDFC5'+medals+'/6  $'+gs.gold,{fontSize:'10px',color:'#c9a84c',fontFamily:'Courier New'}).setOrigin(1,0);
+    const bcolors=[0x3498db,0xa08060,0x27ae60,0xe74c3c,0xe67e22,0x9b59b6];
+    for(let i=0;i<6;i++){const mg=this.G();mg.fillStyle(gs.defeatedGyms.includes(i)?bcolors[i]:0x1e1830,1);mg.fillCircle(46+i*16,46,6);}
   }
 
   drawDPad(startY) {
-    const W=this.W,gs=this.gs;
-    const cx=W*0.27,cy=startY+82,sz=46,gap=5;
-    const bg=this.gfx();bg.fillStyle(0x0e0c1c,1);bg.fillRect(0,startY,W,this.H-startY);
-    bg.lineStyle(2,0xc9a84c,1);bg.lineBetween(0,startY,W,startY);
+    const W=this.W,gs=this.gs,sz=46,gap=5,cx=W*0.27,cy=startY+82;
+    const bg=this.G();bg.fillStyle(0x0e0c1c,1);bg.fillRect(0,startY,W,this.H-startY);bg.lineStyle(2,0xc9a84c,1);bg.lineBetween(0,startY,W,startY);
     [{l:'\u25B2',dx:0,dy:-1,x:cx,y:cy-sz-gap},{l:'\u25BC',dx:0,dy:1,x:cx,y:cy+sz+gap},{l:'\u25C0',dx:-1,dy:0,x:cx-sz-gap,y:cy},{l:'\u25B6',dx:1,dy:0,x:cx+sz+gap,y:cy}].forEach(d=>{
-      const dg=this.gfx();dg.fillStyle(0x282440,1);dg.fillCircle(d.x,d.y,sz/2);dg.lineStyle(2,0x4a4068,1);dg.strokeCircle(d.x,d.y,sz/2);
+      const dg=this.G();dg.fillStyle(0x282440,1);dg.fillCircle(d.x,d.y,sz/2);dg.lineStyle(2,0x4a4068,1);dg.strokeCircle(d.x,d.y,sz/2);
       this.add.text(d.x,d.y,d.l,{fontSize:'17px',color:'#b0b8d0',fontFamily:'Courier New'}).setOrigin(0.5);
       this.addHit(d.x-sz/2,d.y-sz/2,sz,sz,()=>this.movePlayer(d.dx,d.dy));
     });
@@ -557,37 +657,48 @@ export class GameScene extends Phaser.Scene {
   movePlayer(dx,dy) {
     const gs=this.gs;
     if(gs.screen!=='map') return;
-    const mapDef=gs.map==='town'?{data:MAP_TOWN}:gs.map==='league'?LEAGUE_MAP:gymMap(gs.gymIdx);
+    const m=this.getMapDef();
     const nx=gs.px+dx,ny=gs.py+dy;
-    if(ny<0||ny>=mapDef.data.length||nx<0||nx>=mapDef.data[0].length) return;
-    const tile=mapDef.data[ny][nx];
-    if(tile===1||tile===3) return;
+    if(ny<0||ny>=m.data.length||nx<0||nx>=m.data[0].length) return;
+    const tile=m.data[ny][nx];
+    if(tile===6) return; // wall
+    if(tile===5) return; // water (no surfing yet)
+
+    // Update direction
+    if(dx===1)gs.playerDir='right'; else if(dx===-1)gs.playerDir='left';
+    else if(dy===1)gs.playerDir='down'; else if(dy===-1)gs.playerDir='up';
+    gs.walkFrame=(gs.walkFrame+1)%4;
 
     if(gs.map==='town'){
+      // Enter gym
       const gd=GYM_DOORS.find(g=>g.x===nx&&g.y===ny);
-      if(gd){gs.map='gym';gs.gymIdx=gd.gymIdx;const gm=gymMap(gd.gymIdx);gs.px=gm.spawnX;gs.py=gm.spawnY;this.render();return;}
+      if(gd){gs.map='gym';gs.gymIdx=gd.gymIdx;const gm=makeGymMap(gd.gymIdx);gs.px=gm.spawnX;gs.py=gm.spawnY;this.render();return;}
+      // Enter league
       if(nx===LEAGUE_DOOR.x&&ny===LEAGUE_DOOR.y){
-        const m=gs.defeatedGyms.filter(i=>i<6).length;
-        if(m<6){this.showDialog(null,'Necesitas las 6 medallas\npara entrar a la Liga.\nTienes '+m+'/6.',false,null);return;}
+        const medals=gs.defeatedGyms.filter(i=>i<6).length;
+        if(medals<6){this.showDialog(null,'Necesitas las 6 medallas\npara entrar a la Liga.\nTienes '+medals+'/6.',false,null);return;}
         gs.map='league';gs.px=LEAGUE_MAP.spawnX;gs.py=LEAGUE_MAP.spawnY;this.render();return;
       }
+      // NPCs
       const npc=TOWN_NPCS.find(n=>n.x===nx&&n.y===ny);
       if(npc){this.showDialog(null,npc.text,false,null);return;}
+      // Pedro
       if(nx===TOWN_PEDRO.x&&ny===TOWN_PEDRO.y){this.showDialog('pedro',PEDRO_LINES[Math.floor(Math.random()*PEDRO_LINES.length)],false,null);return;}
-      if(tile===2&&Math.random()<0.28){
-        const w=[{name:'Serpiente',hp:40,atk:20,def:15,moves:['Mordisco','Veneno','Ataque','Esquivar'],reward:40},{name:'Ratata',hp:30,atk:18,def:12,moves:['Mordisco','Aranazo','Placaje','Grito'],reward:35},{name:'Pidgey',hp:35,atk:22,def:14,moves:['Picotazo','Rafaga','Ataque','Vuelo'],reward:45}];
+      // Wild encounter
+      if(tile===1&&Math.random()<0.3){
+        const w=[{name:'Serpiente',hp:40,atk:20,def:15,moves:['Mordisco','Veneno','Ataque','Defensa'],reward:40},{name:'Ratata',hp:30,atk:18,def:12,moves:['Mordisco','Aranazo','Placaje','Grito'],reward:35},{name:'Pidgey',hp:35,atk:22,def:14,moves:['Picotazo','Rafaga','Ataque','Vuelo'],reward:45}];
         this.startBattle('wild',{...w[Math.floor(Math.random()*w.length)]});return;
       }
     }
 
     if(gs.map==='gym'){
-      const gm=gymMap(gs.gymIdx);
+      const gm=makeGymMap(gs.gymIdx);
       if(nx===gm.exitX&&ny===gm.exitY){gs.map='town';gs.px=GYM_DOORS[gs.gymIdx].x;gs.py=GYM_DOORS[gs.gymIdx].y+1;this.render();return;}
-      if(nx===gm.leaderX&&ny===gm.leaderY&&!gs.defeatedGyms.includes(gs.gymIdx)){
+      if(tile===11&&!gs.defeatedGyms.includes(gs.gymIdx)){
         const gym=GYM_LEADERS[gs.gymIdx];
         this.showDialog(gym.photo,gym.dialog,true,()=>this.startBattle('gym',gs.gymIdx));return;
       }
-      if(tile===8&&!gs.defeatedGyms.includes(gs.gymIdx)){
+      if(nx===gm.leaderX&&ny===gm.leaderY&&!gs.defeatedGyms.includes(gs.gymIdx)){
         const gym=GYM_LEADERS[gs.gymIdx];
         this.showDialog(gym.photo,gym.dialog,true,()=>this.startBattle('gym',gs.gymIdx));return;
       }
@@ -599,7 +710,7 @@ export class GameScene extends Phaser.Scene {
         const ep=LEAGUE_MAP.elitePositions[i];
         if(nx===ep.x&&ny===ep.y&&!gs.defeatedGyms.includes(6+i)){this.showDialog(e.photo,e.dialog,true,()=>this.startBattle('elite',i));return;}
       });
-      if(tile===8){
+      if(tile===11){
         const next=ELITE.findIndex((_,i)=>!gs.defeatedGyms.includes(6+i));
         if(next>=0){const e=ELITE[next];this.showDialog(e.photo,e.dialog,true,()=>this.startBattle('elite',next));}
         return;
@@ -618,13 +729,13 @@ export class GameScene extends Phaser.Scene {
 
   drawDialog() {
     const W=this.W,H=this.H,d=this.gs.dialog;
-    const bg=this.gfx();bg.fillGradientStyle(0x0c1808,0x0c1808,0x1a2810,0x1a2810,1);bg.fillRect(0,0,W,H);
+    const bg=this.G();bg.fillGradientStyle(0x0c1808,0x0c1808,0x1a2810,0x1a2810,1);bg.fillRect(0,0,W,H);
     const aY=H*0.33;
     if(d.photo&&this.textures.exists(d.photo)){this.photoCircle(d.photo,W/2,aY,60,0xc9a84c,false);}
     else{this.add.text(W/2,aY-20,'\uD83D\uDC64',{fontSize:'52px'}).setOrigin(0.5);}
     const bY=Math.floor(H*0.54),bH=d.fight?115:95;
-    const bb=this.gfx();bb.fillStyle(0xeef0d0,1);bb.fillRect(14,bY,W-28,bH);bb.lineStyle(4,0x303030,1);bb.strokeRect(14,bY,W-28,bH);
-    const bi=this.gfx();bi.lineStyle(2,0x505050,1);bi.strokeRect(20,bY+6,W-40,bH-12);
+    const bb=this.G();bb.fillStyle(0xeef0d0,1);bb.fillRect(14,bY,W-28,bH);bb.lineStyle(4,0x303030,1);bb.strokeRect(14,bY,W-28,bH);
+    const bi=this.G();bi.lineStyle(2,0x505050,1);bi.strokeRect(20,bY+6,W-40,bH-12);
     this.add.text(28,bY+14,'> '+d.text,{fontSize:'12px',color:'#202020',fontFamily:'Courier New',wordWrap:{width:W-56},lineSpacing:3});
     if(d.fight){
       this.drawBtn(22,bY+bH+14,140,44,0x8c1010,0xffffff,'COMBATIR',d.onFight,13);
@@ -651,75 +762,89 @@ export class GameScene extends Phaser.Scene {
     const isL=bd.type==='gym'||bd.type==='elite';
     const scH=Math.floor(H*0.5);
 
-    // Scene
-    const sky=this.gfx();sky.fillGradientStyle(0x5888c0,0x5888c0,0x90b8d8,0x90b8d8,1);sky.fillRect(0,0,W,scH*0.5);
-    const gnd=this.gfx();gnd.fillGradientStyle(0x80b838,0x80b838,0x589028,0x589028,1);gnd.fillRect(0,scH*0.45,W,scH*0.55);
-    const ep=this.gfx();ep.fillStyle(0x70a830,1);ep.fillEllipse(W*0.76,scH*0.3,W*0.22,12);
-    const pp=this.gfx();pp.fillStyle(0x68a028,1);pp.fillEllipse(W*0.24,scH*0.62,W*0.26,14);
+    // FireRed battle background
+    const sky=this.G();sky.fillGradientStyle(0x5888c0,0x5888c0,0x90b8d8,0x90b8d8,1);sky.fillRect(0,0,W,scH*0.5);
+    const gnd=this.G();gnd.fillGradientStyle(0x80b838,0x80b838,0x589028,0x589028,1);gnd.fillRect(0,scH*0.45,W,scH*0.55);
 
-    // Enemy HUD
-    const esh=this.gfx();esh.fillStyle(0x222222,1);esh.fillRect(10,10,178,60);
-    const ehb=this.gfx();ehb.fillStyle(0xfafaeb,1);ehb.fillRect(7,7,178,60);ehb.lineStyle(3,0x303030,1);ehb.strokeRect(7,7,178,60);
-    this.add.text(14,14,e.name.toUpperCase(),{fontSize:'12px',color:'#101010',fontFamily:'Courier New',fontStyle:'bold'});
-    if(isL&&e.leaderData) this.add.text(14,30,e.leaderData.leader||e.leaderData.name||'',{fontSize:'10px',color:'#'+e.leaderData.color.toString(16).padStart(6,'0'),fontFamily:'Courier New'});
-    this.hpBar(28,isL?46:36,132,9,ePct);
-    this.add.text(163,isL?44:34,bd.enemyHP+'/'+bd.enemyMaxHP,{fontSize:'9px',color:'#505050',fontFamily:'Courier New'});
+    // Enemy platform
+    const ep=this.G();ep.fillStyle(0x70a830,1);ep.fillEllipse(W*0.76,scH*0.3,W*0.22,12);
+    ep.fillStyle(0x589020,1);ep.fillEllipse(W*0.76,scH*0.32,W*0.22,7);
 
-    // Enemy sprite
+    // Player platform
+    const pp=this.G();pp.fillStyle(0x68a028,1);pp.fillEllipse(W*0.24,scH*0.62,W*0.26,14);
+    pp.fillStyle(0x508020,1);pp.fillEllipse(W*0.24,scH*0.65,W*0.26,8);
+
+    // Enemy HUD (FireRed style - top left box)
+    const esh=this.G();esh.fillStyle(0x303028,1);esh.fillRoundedRect(8,8,180,62,4);
+    const ehb=this.G();ehb.fillStyle(0xf8f8e8,1);ehb.fillRoundedRect(6,6,180,62,4);ehb.lineStyle(2.5,0x303028,1);ehb.strokeRoundedRect(6,6,180,62,4);
+    this.add.text(12,11,e.name.toUpperCase(),{fontSize:'12px',color:'#101010',fontFamily:'Courier New',fontStyle:'bold'});
+    if(isL&&e.leaderData) this.add.text(12,26,e.leaderData.name||e.leaderData.leader||'',{fontSize:'10px',color:'#'+e.leaderData.color.toString(16).padStart(6,'0'),fontFamily:'Courier New'});
+    // HP label
+    this.add.text(12,isL?42:34,'HP/',{fontSize:'10px',color:'#303028',fontFamily:'Courier New',fontStyle:'bold'});
+    this.hpBar(32,isL?44:36,140,8,ePct);
+    this.add.text(172,isL?42:34,bd.enemyHP+'/'+bd.enemyMaxHP,{fontSize:'8px',color:'#505048',fontFamily:'Courier New'});
+
+    // Enemy sprite - larger, back view style
     const eSX=W*0.76,eSY=scH*0.19;
-    const eAl=bd.enemyHP<=0?0.15:1;
-    if(isL&&e.photo&&this.textures.exists(e.photo)){this.photoCircle(e.photo,eSX,eSY,50,e.leaderData?e.leaderData.color:0xc04040,false);}
-    else{this.add.text(eSX,eSY,e.name.charAt(0),{fontSize:'52px',color:'#f0f0f0',fontFamily:'Courier New',fontStyle:'bold'}).setOrigin(0.5).setAlpha(eAl);}
+    if(isL&&e.photo&&this.textures.exists(e.photo)){
+      this.photoCircle(e.photo,eSX,eSY,52,e.leaderData?e.leaderData.color:0xc04040,false);
+    } else {
+      const eg=this.G();eg.fillStyle(0x404040,0.8);eg.fillCircle(eSX,eSY,40);
+      this.add.text(eSX,eSY,e.name.charAt(0),{fontSize:'40px',color:'#f0f0f0',fontFamily:'Courier New'}).setOrigin(0.5);
+    }
 
-    // Player sprite
-    const pSX=W*0.24,pSY=scH*0.57;
-    const pAl=bd.playerHP<=0?0.15:1;
+    // Player sprite - front view, larger
+    const pSX=W*0.24,pSY=scH*0.56;
     const pkPhoto=pk.photo;
-    if(pkPhoto&&this.textures.exists(pkPhoto)){this.photoCircle(pkPhoto,pSX,pSY,58,0xc9a84c,false);}
-    else{this.photoCircle(gs.trainer.photo,pSX,pSY,58,0xc9a84c,false);}
+    if(pkPhoto&&this.textures.exists(pkPhoto)){this.photoCircle(pkPhoto,pSX,pSY,60,0xc9a84c,false);}
+    else{this.photoCircle(gs.trainer.photo,pSX,pSY,60,0xc9a84c,false);}
 
-    // Player HUD
-    const pHY=scH-68;
-    const psh=this.gfx();psh.fillStyle(0x222222,1);psh.fillRect(W-190,pHY+3,184,64);
-    const phb=this.gfx();phb.fillStyle(0xfafaeb,1);phb.fillRect(W-193,pHY,184,64);phb.lineStyle(3,0x303030,1);phb.strokeRect(W-193,pHY,184,64);
-    this.add.text(W-186,pHY+7,pk.name.toUpperCase(),{fontSize:'12px',color:'#101010',fontFamily:'Courier New',fontStyle:'bold'});
-    this.hpBar(W-168,pHY+30,132,9,pPct);
-    this.add.text(W-186,pHY+46,bd.playerHP+'/'+pk.hp,{fontSize:'10px',color:'#303030',fontFamily:'Courier New',fontStyle:'bold'});
+    // Player HUD (bottom right - FireRed style)
+    const pHY=scH-70;
+    const psh=this.G();psh.fillStyle(0x303028,1);psh.fillRoundedRect(W-195,pHY+3,186,66,4);
+    const phb=this.G();phb.fillStyle(0xf8f8e8,1);phb.fillRoundedRect(W-197,pHY,186,66,4);phb.lineStyle(2.5,0x303028,1);phb.strokeRoundedRect(W-197,pHY,186,66,4);
+    this.add.text(W-190,pHY+8,pk.name.toUpperCase(),{fontSize:'12px',color:'#101010',fontFamily:'Courier New',fontStyle:'bold'});
+    this.add.text(W-190,pHY+26,'HP/',{fontSize:'10px',color:'#303028',fontFamily:'Courier New',fontStyle:'bold'});
+    this.hpBar(W-170,pHY+28,140,8,pPct);
+    this.add.text(W-190,pHY+44,bd.playerHP+'/'+pk.hp,{fontSize:'10px',color:'#303028',fontFamily:'Courier New',fontStyle:'bold'});
 
-    // UI
+    // Battle UI (bottom panel - FireRed style)
     const uiY=scH;
-    const uib=this.gfx();uib.fillStyle(0xe8f0c8,1);uib.fillRect(0,uiY,W,H-uiY);uib.lineStyle(4,0x303030,1);uib.lineBetween(0,uiY,W,uiY);
-    const lb=this.gfx();lb.fillStyle(0xf0f8d8,1);lb.fillRect(0,uiY,W,52);lb.lineStyle(1.5,0xc0c8a0,1);lb.strokeRect(0,uiY,W,52);
-    bd.log.slice(-2).forEach((l,i)=>this.add.text(10,uiY+8+i*22,(i===0&&bd.log.length>1?'   ':'> ')+l,{fontSize:'11px',color:'#202020',fontFamily:'Courier New'}));
+    const uib=this.G();uib.fillStyle(0xe8f0c8,1);uib.fillRect(0,uiY,W,H-uiY);uib.lineStyle(4,0x303028,1);uib.lineBetween(0,uiY,W,uiY);
+
+    // Log box
+    const lb=this.G();lb.fillStyle(0xf4f8e0,1);lb.fillRect(0,uiY,W,52);lb.lineStyle(1.5,0xb8c090,1);lb.strokeRect(0,uiY,W,52);
+    bd.log.slice(-2).forEach((l,i)=>this.add.text(12,uiY+8+i*22,(i===0&&bd.log.length>1?'   ':'> ')+l,{fontSize:'11px',color:'#202018',fontFamily:'Courier New'}));
 
     const aY=uiY+56;
     if(!done&&bd.phase==='choose'){
+      // FireRed style move buttons
       const mvs=pk.moves||['Ataque','Defensa','Curar','Especial'];
-      mvs.forEach((m,i)=>{
-        const col=i%2,row=Math.floor(i/2),bx=col*(W/2),by=aY+row*46;
-        const mg=this.gfx();mg.fillStyle(col===0?0xd0e0a8:0xc8d8a0,1);mg.fillRect(bx,by,W/2,44);mg.lineStyle(1,0xa0b878,1);mg.strokeRect(bx,by,W/2,44);
-        this.add.text(bx+8,by+9,'> '+m,{fontSize:'11px',color:'#1a2010',fontFamily:'Courier New',fontStyle:'bold'});
-        this.addHit(bx,by,W/2,44,()=>this.doMove(i));
+      mvs.forEach((mv,i)=>{
+        const col=i%2,row=Math.floor(i/2),bx=col*(W/2),by=aY+row*44;
+        const mg=this.G();mg.fillStyle(col===0?0xd0e0a8:0xc8d8a0,1);mg.fillRect(bx,by,W/2,42);mg.lineStyle(1,0xa0b878,1);mg.strokeRect(bx,by,W/2,42);
+        this.add.text(bx+10,by+11,'> '+mv,{fontSize:'11px',color:'#1a2010',fontFamily:'Courier New',fontStyle:'bold'});
+        this.addHit(bx,by,W/2,42,()=>this.doMove(i));
       });
-      const iY=aY+92;
+      const iY=aY+90;
       const canP=gs.inventory.potion>0,canS=gs.inventory.superPotion>0;
-      const pig=this.gfx();pig.fillStyle(canP?0xc0d898:0xb0c888,1);pig.fillRect(0,iY,W/2-1,38);
-      this.add.text(8,iY+7,'Pocion +20HP x'+gs.inventory.potion,{fontSize:'10px',color:canP?'#1a2810':'#708060',fontFamily:'Courier New',fontStyle:'bold'});
-      if(canP)this.addHit(0,iY,W/2-1,38,()=>this.useItem('potion'));
-      const sig=this.gfx();sig.fillStyle(canS?0xa8c8e0:0x98b8d0,1);sig.fillRect(W/2+1,iY,W/2-(bd.type==='wild'?42:2),38);
-      this.add.text(W/2+9,iY+7,'Super +50HP x'+gs.inventory.superPotion,{fontSize:'10px',color:canS?'#0c1e2a':'#506070',fontFamily:'Courier New',fontStyle:'bold'});
-      if(canS)this.addHit(W/2+1,iY,W/2-2,38,()=>this.useItem('superPotion'));
-      if(bd.type==='wild'){const fg=this.gfx();fg.fillStyle(0xe09898,1);fg.fillRect(W-42,iY,42,38);this.add.text(W-21,iY+19,'HUIR',{fontSize:'10px',color:'#500000',fontFamily:'Courier New',fontStyle:'bold'}).setOrigin(0.5);this.addHit(W-42,iY,42,38,()=>this.doFlee());}
+      const pig=this.G();pig.fillStyle(canP?0xc0d898:0xb0c888,1);pig.fillRect(0,iY,W/2-1,36);
+      this.add.text(8,iY+9,'Pocion +20HP x'+gs.inventory.potion,{fontSize:'10px',color:canP?'#1a2810':'#708060',fontFamily:'Courier New',fontStyle:'bold'});
+      if(canP)this.addHit(0,iY,W/2-1,36,()=>this.useItem('potion'));
+      const sig=this.G();sig.fillStyle(canS?0xa8c8e0:0x98b8d0,1);sig.fillRect(W/2+1,iY,W/2-(bd.type==='wild'?42:2),36);
+      this.add.text(W/2+9,iY+9,'Super +50HP x'+gs.inventory.superPotion,{fontSize:'10px',color:canS?'#0c1e2a':'#506070',fontFamily:'Courier New',fontStyle:'bold'});
+      if(canS)this.addHit(W/2+1,iY,W/2-2,36,()=>this.useItem('superPotion'));
+      if(bd.type==='wild'){const fg=this.G();fg.fillStyle(0xe09898,1);fg.fillRect(W-42,iY,42,36);this.add.text(W-21,iY+18,'HUIR',{fontSize:'10px',color:'#500000',fontFamily:'Courier New',fontStyle:'bold'}).setOrigin(0.5);this.addHit(W-42,iY,42,36,()=>this.doFlee());}
     } else if(bd.phase==='enemy'){
-      this.add.text(W/2,aY+45,e.name.toUpperCase()+' ataca...',{fontSize:'13px',color:'#303030',fontFamily:'Courier New'}).setOrigin(0.5);
+      this.add.text(W/2,aY+42,e.name.toUpperCase()+' ataca...',{fontSize:'12px',color:'#202018',fontFamily:'Courier New'}).setOrigin(0.5);
     } else if(done){
-      const rc=this.gfx();rc.fillStyle(bd.phase==='win'?0xc8e8a0:bd.phase==='lose'?0xf0c0c0:0xf0e8a0,1);rc.fillRect(0,aY,W,88);
-      this.add.text(W/2,aY+16,bd.phase==='win'?'VICTORIA!':bd.phase==='lose'?'DERROTA...':'ESCAPASTE!',{fontSize:'17px',color:'#101010',fontFamily:'Courier New',fontStyle:'bold'}).setOrigin(0.5);
+      const rc=this.G();rc.fillStyle(bd.phase==='win'?0xc8e8a0:bd.phase==='lose'?0xf0c0c0:0xf0e8a0,1);rc.fillRect(0,aY,W,86);
+      this.add.text(W/2,aY+14,bd.phase==='win'?'VICTORIA!':bd.phase==='lose'?'DERROTA...':'ESCAPASTE!',{fontSize:'17px',color:'#101010',fontFamily:'Courier New',fontStyle:'bold'}).setOrigin(0.5);
       const msg=bd.phase==='win'?e.name+' se debilito! +'+((e.reward||50))+'$':bd.phase==='lose'?pk.name+' se debilito!':'Has escapado!';
-      this.add.text(W/2,aY+42,msg,{fontSize:'11px',color:'#202020',fontFamily:'Courier New'}).setOrigin(0.5);
-      if(bd.phase==='win'&&isL&&e.leaderData) this.add.text(W/2,aY+62,e.leaderData.defeat,{fontSize:'10px',color:'#203010',fontFamily:'Courier New'}).setOrigin(0.5);
-      const cb=this.gfx();cb.fillStyle(0x1a1830,1);cb.fillRect(0,H-52,W,52);
-      this.add.text(W/2,H-26,'>> CONTINUAR',{fontSize:'13px',color:'#c8d8e8',fontFamily:'Courier New',fontStyle:'bold'}).setOrigin(0.5);
+      this.add.text(W/2,aY+40,msg,{fontSize:'11px',color:'#202020',fontFamily:'Courier New'}).setOrigin(0.5);
+      if(bd.phase==='win'&&isL&&e.leaderData) this.add.text(W/2,aY+60,e.leaderData.defeat,{fontSize:'10px',color:'#203010',fontFamily:'Courier New'}).setOrigin(0.5);
+      const cb=this.G();cb.fillStyle(0x303028,1);cb.fillRect(0,H-52,W,52);
+      this.add.text(W/2,H-26,'>> CONTINUAR',{fontSize:'13px',color:'#f0f8e0',fontFamily:'Courier New',fontStyle:'bold'}).setOrigin(0.5);
       this.addHit(0,H-52,W,52,()=>{
         if(bd.phase==='lose') gs.pokeHP=Math.max(10,Math.floor(pk.hp*0.1));
         else gs.pokeHP=bd.playerHP;
@@ -730,13 +855,12 @@ export class GameScene extends Phaser.Scene {
   }
 
   doMove(idx) {
-    const gs=this.gs,bd=gs.battle;
-    if(!bd||bd.phase!=='choose') return;
+    const gs=this.gs,bd=gs.battle;if(!bd||bd.phase!=='choose') return;
     const dr=[[14,24],[0,0],[18,28],[26,38]];
-    const m=gs.pokemon.moves[idx]||'Ataque';
+    const mv=gs.pokemon.moves[idx]||'Ataque';
     const d=dr[idx][0]+Math.floor(Math.random()*(dr[idx][1]-dr[idx][0]+1));
     if(dr[idx][0]===0){bd.playerHP=Math.min(gs.pokemon.hp,bd.playerHP+30);bd.log.push(gs.pokemon.name+': +30HP!');}
-    else{bd.enemyHP=Math.max(0,bd.enemyHP-d);bd.log.push(gs.pokemon.name+' '+m+': -'+d+'HP!');}
+    else{bd.enemyHP=Math.max(0,bd.enemyHP-d);bd.log.push(gs.pokemon.name+' '+mv+': -'+d+'HP!');}
     gs.pokeHP=bd.playerHP;
     if(bd.enemyHP<=0){
       const r=bd.enemy.reward||50;gs.gold+=r;
@@ -748,20 +872,17 @@ export class GameScene extends Phaser.Scene {
     bd.phase='enemy';this.render();
     this.time.delayedCall(1000,()=>{
       if(!gs.battle||gs.battle.phase!=='enemy') return;
-      const ea=bd.enemy.atk||20;
-      const ed=Math.max(4,Math.floor(ea*0.7+Math.random()*ea*0.65));
+      const ea=bd.enemy.atk||20;const ed=Math.max(4,Math.floor(ea*0.7+Math.random()*ea*0.65));
       bd.playerHP=Math.max(0,bd.playerHP-ed);gs.pokeHP=bd.playerHP;
       const em=(bd.enemy.moves||['Ataque'])[Math.floor(Math.random()*(bd.enemy.moves||['Ataque']).length)];
       bd.log.push(bd.enemy.name+' '+em+': -'+ed+'HP!');
-      if(bd.playerHP<=0){bd.log.push(gs.pokemon.name+' se debilito!');bd.phase='lose';}
-      else bd.phase='choose';
+      if(bd.playerHP<=0){bd.log.push(gs.pokemon.name+' se debilito!');bd.phase='lose';}else bd.phase='choose';
       this.render();
     });
   }
 
   useItem(item) {
-    const gs=this.gs,bd=gs.battle;
-    if(!bd||bd.phase!=='choose'||gs.inventory[item]<=0) return;
+    const gs=this.gs,bd=gs.battle;if(!bd||bd.phase!=='choose'||gs.inventory[item]<=0) return;
     const a=item==='potion'?20:50;
     bd.playerHP=Math.min(gs.pokemon.hp,bd.playerHP+a);gs.pokeHP=bd.playerHP;
     gs.inventory[item]--;bd.log.push('Pocion: +'+a+'HP!');bd.phase='enemy';this.render();
@@ -776,40 +897,37 @@ export class GameScene extends Phaser.Scene {
   }
 
   doFlee() {
-    const bd=this.gs.battle;
-    if(!bd||bd.phase!=='choose'||bd.type!=='wild') return;
-    if(Math.random()<0.65){bd.log.push('Has escapado!');bd.phase='fled';}
-    else bd.log.push('No has podido escapar!');
+    const bd=this.gs.battle;if(!bd||bd.phase!=='choose'||bd.type!=='wild') return;
+    if(Math.random()<0.65){bd.log.push('Has escapado!');bd.phase='fled';}else bd.log.push('No has podido escapar!');
     this.render();
   }
 
   openBag() {
     if(this.gs.screen!=='map') return;
     const W=this.W,H=this.H,gs=this.gs,pk=gs.pokemon,maxHP=pk.hp;
-    const ob=this.gfx();ob.fillStyle(0x000000,0.8);ob.fillRect(0,0,W,H);
+    const ob=this.G();ob.fillStyle(0x000000,0.8);ob.fillRect(0,0,W,H);
     ob.setInteractive(new Phaser.Geom.Rectangle(0,0,W,H),Phaser.Geom.Rectangle.Contains);
-    ob.on('pointerdown',()=>{this.render();});
-    const pb=this.gfx();pb.fillStyle(0xeef0d0,1);pb.fillRect(18,H*0.32,W-36,H*0.44);pb.lineStyle(3,0x303030,1);pb.strokeRect(18,H*0.32,W-36,H*0.44);
-    this.add.text(26,H*0.32+14,'MOCHILA',{fontSize:'14px',color:'#202020',fontFamily:'Courier New',fontStyle:'bold'});
-    this.add.text(26,H*0.32+34,'HP: '+gs.pokeHP+'/'+maxHP,{fontSize:'11px',color:'#404040',fontFamily:'Courier New'});
+    ob.on('pointerdown',()=>this.render());
+    const pb=this.G();pb.fillStyle(0xeef0d0,1);pb.fillRect(18,H*0.32,W-36,H*0.44);pb.lineStyle(3,0x303028,1);pb.strokeRect(18,H*0.32,W-36,H*0.44);
+    this.add.text(26,H*0.32+14,'MOCHILA',{fontSize:'14px',color:'#202018',fontFamily:'Courier New',fontStyle:'bold'});
+    this.add.text(26,H*0.32+34,'HP: '+gs.pokeHP+'/'+maxHP,{fontSize:'11px',color:'#404038',fontFamily:'Courier New'});
     const canP=gs.inventory.potion>0&&gs.pokeHP<maxHP;
-    const p1=this.gfx();p1.fillStyle(canP?0xc0d898:0xa8c888,1);p1.fillRect(26,H*0.32+56,(W-52)/2,58);p1.lineStyle(2,0x303030,1);p1.strokeRect(26,H*0.32+56,(W-52)/2,58);
+    const p1=this.G();p1.fillStyle(canP?0xc0d898:0xa8c888,1);p1.fillRect(26,H*0.32+56,(W-52)/2,58);p1.lineStyle(2,0x303028,1);p1.strokeRect(26,H*0.32+56,(W-52)/2,58);
     this.add.text(34,H*0.32+64,'Pocion +20HP',{fontSize:'12px',color:canP?'#1a2810':'#708060',fontFamily:'Courier New',fontStyle:'bold'});
     this.add.text(34,H*0.32+82,'x'+gs.inventory.potion+' quedan',{fontSize:'11px',color:'#404030',fontFamily:'Courier New'});
     if(canP){p1.setInteractive(new Phaser.Geom.Rectangle(26,H*0.32+56,(W-52)/2,58),Phaser.Geom.Rectangle.Contains);p1.on('pointerdown',()=>{gs.pokeHP=Math.min(maxHP,gs.pokeHP+20);gs.inventory.potion--;this.render();});}
     const canS=gs.inventory.superPotion>0&&gs.pokeHP<maxHP;
-    const p2=this.gfx();p2.fillStyle(canS?0xa8c8e0:0x90b0c8,1);p2.fillRect(W/2+10,H*0.32+56,(W-52)/2,58);p2.lineStyle(2,0x303030,1);p2.strokeRect(W/2+10,H*0.32+56,(W-52)/2,58);
+    const p2=this.G();p2.fillStyle(canS?0xa8c8e0:0x90b0c8,1);p2.fillRect(W/2+10,H*0.32+56,(W-52)/2,58);p2.lineStyle(2,0x303028,1);p2.strokeRect(W/2+10,H*0.32+56,(W-52)/2,58);
     this.add.text(W/2+18,H*0.32+64,'Super +50HP',{fontSize:'12px',color:canS?'#0c1e2a':'#506878',fontFamily:'Courier New',fontStyle:'bold'});
     this.add.text(W/2+18,H*0.32+82,'x'+gs.inventory.superPotion+' quedan',{fontSize:'11px',color:'#304050',fontFamily:'Courier New'});
     if(canS){p2.setInteractive(new Phaser.Geom.Rectangle(W/2+10,H*0.32+56,(W-52)/2,58),Phaser.Geom.Rectangle.Contains);p2.on('pointerdown',()=>{gs.pokeHP=Math.min(maxHP,gs.pokeHP+50);gs.inventory.superPotion--;this.render();});}
-    this.drawBtn(W/2-70,H*0.32+H*0.44-48,140,40,0x1a1830,0xc0c8e0,'CERRAR',()=>this.render(),12);
+    this.drawBtn(W/2-70,H*0.32+H*0.44-48,140,40,0x303028,0xf0f8e0,'CERRAR',()=>this.render(),12);
   }
 
-  // ── VICTORY ──
   drawVictory() {
     const W=this.W,H=this.H,gs=this.gs;
-    const bg=this.gfx();bg.fillGradientStyle(0x030108,0x030108,0x0a0318,0x0a0318,1);bg.fillRect(0,0,W,H);
-    for(let i=0;i<60;i++){const sg=this.gfx();const a=0.1+0.9*Math.abs(Math.sin(gs.animFrame*0.06+i));sg.fillStyle(0xffffff,a*0.8);sg.fillRect((i*137)%W,(i*97)%H,i%4?1:2,i%4?1:2);}
+    const bg=this.G();bg.fillGradientStyle(0x030108,0x030108,0x0a0318,0x0a0318,1);bg.fillRect(0,0,W,H);
+    for(let i=0;i<60;i++){const sg=this.G();const a=0.1+0.9*Math.abs(Math.sin(gs.animFrame*0.06+i));sg.fillStyle(0xffffff,a*0.8);sg.fillRect((i*137)%W,(i*97)%H,i%4?1:2,i%4?1:2);}
     const wy=H*0.14+Math.sin(gs.animFrame*0.25)*12;
     this.add.text(W/2,wy,'\uD83E\uDE84',{fontSize:'68px',shadow:{blur:25,color:'#f0d020',fill:true}}).setOrigin(0.5);
     this.add.text(W/2,H*0.28,'CAMPEON POKEMON!',{fontSize:'22px',color:'#c9a84c',fontFamily:'Courier New',fontStyle:'bold',shadow:{blur:12,color:'#c9a84c',fill:true}}).setOrigin(0.5);
@@ -817,7 +935,7 @@ export class GameScene extends Phaser.Scene {
     this.photoCircle('ana',W/2-44,H*0.46,34,0xc9a84c,false);
     this.photoCircle('pilar_m',W/2+44,H*0.46,34,0x8e44ad,false);
     this.add.text(W/2,H*0.57,'Ana + Pilar derrotadas.',{fontSize:'11px',color:'#8080b0',fontFamily:'Courier New'}).setOrigin(0.5);
-    const sb=this.gfx();sb.fillStyle(0xc8c840,0.12);sb.fillRect(W*0.08,H*0.61,W*0.84,64);sb.lineStyle(2,0xc9a84c,1);sb.strokeRect(W*0.08,H*0.61,W*0.84,64);
+    const sb=this.G();sb.fillStyle(0xc8c840,0.12);sb.fillRect(W*0.08,H*0.61,W*0.84,64);sb.lineStyle(2,0xc9a84c,1);sb.strokeRect(W*0.08,H*0.61,W*0.84,64);
     [['$'+gs.gold,'ORO'],[''+gs.steps,'PASOS'],['6/6','GYMS']].forEach(([v,l],i)=>{
       this.add.text(W*0.22+i*W*0.28,H*0.61+12,v,{fontSize:'17px',color:'#d0c060',fontFamily:'Courier New',fontStyle:'bold'}).setOrigin(0.5);
       this.add.text(W*0.22+i*W*0.28,H*0.61+36,l,{fontSize:'8px',color:'#807870',fontFamily:'Courier New'}).setOrigin(0.5);
